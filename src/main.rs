@@ -48,17 +48,17 @@ fn get_input(msg: &'static str) -> String {
 
     stdin().read_line(&mut input).expect("Error reading input");
 
-    input = clean_input(input);
+    clean_input(&mut input);
 
     input // Return cleaned input.
 }
 
 /*
- * Takes a mutable String `input`
- * Returns String cleaned of end chars:
+ * Takes a mutable String reference `input`
+ * Cleans String of end chars:
  * `\n` and `\r`.
 **/
-fn clean_input(mut input: String) -> String {
+fn clean_input(input: &mut String) {
    // Remove newline.
     if let Some('\n')=input.chars().next_back() {
         input.pop();
@@ -67,7 +67,6 @@ fn clean_input(mut input: String) -> String {
     if let Some('\r')=input.chars().next_back() {
         input.pop();
     }
-    input // Return cleaned input.
 }
 
 
