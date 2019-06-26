@@ -2,8 +2,15 @@ use std::io::{stdin,stdout,Write};
 
 fn main() {
     let name = get_input("Please enter your name: ");
+    let subject = get_input("Please enter a subject: ");
+    let verb = get_input("Please enter a verb (past tense): ");
+    let object = get_input("Please enter an object: ");
 
-    println!("Hello, {}", name);
+    println!("{name} {verb} the {subject} with their {object}",
+             name=name,
+             verb=verb,
+             subject=subject,
+             object=object);
 }
 
 /*
