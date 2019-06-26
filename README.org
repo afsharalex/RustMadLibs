@@ -1,0 +1,3 @@
+* Rust Mad Libs
+
+A 'toy' project to play around with Rust.
