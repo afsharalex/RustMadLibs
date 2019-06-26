@@ -6,6 +6,11 @@ fn main() {
     let verb = get_input("Please enter a verb (past tense): ");
     let object = get_input("Please enter an object: ");
 
+    print_mad_lib(name, verb, subject, object);
+}
+
+fn print_mad_lib(name: String, verb: String,
+                 subject: String, object: String) {
     println!("{name} {verb} the {subject} with their {object}",
              name=name,
              verb=verb,
@@ -31,6 +36,11 @@ fn get_input(msg: &'static str) -> String {
     input // Return cleaned input.
 }
 
+/*
+ * Takes a mutable String `input`
+ * Returns String cleaned of end chars:
+ * `\n` and `\r`.
+**/
 fn clean_input(mut input: String) -> String {
    // Remove newline.
     if let Some('\n')=input.chars().next_back() {
