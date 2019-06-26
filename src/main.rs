@@ -10,5 +10,13 @@ fn main() {
 
     stdin().read_line(&mut name).expect("Error reading input");
 
+    if let Some('\n')=name.chars().next_back() {
+        name.pop();
+    }
+
+    if let Some('\r')=name.chars().next_back() {
+        name.pop();
+    }
+
     println!("Hello, {}", name);
 }
