@@ -6,24 +6,22 @@ fn main() {
     println!("Hello, {}", name);
 }
 
+/*
+ * Takes a static str `msg`
+ * Returns input from user console.
+**/
 fn get_input(msg: &'static str) -> String {
-    print!("{}", msg); // Print message.
-
-    let mut input = get_raw_input();
-
-    input = clean_input(input);
-
-    input // Return cleaned input.
-}
-
-fn get_raw_input() -> String {
     let mut input = String::new();
+
+    print!("{}", msg); // Print message.
 
     let _=stdout().flush(); // Flust stdout.
 
     stdin().read_line(&mut input).expect("Error reading input");
 
-    input // Return raw input.
+    input = clean_input(input);
+
+    input // Return cleaned input.
 }
 
 fn clean_input(mut input: String) -> String {
