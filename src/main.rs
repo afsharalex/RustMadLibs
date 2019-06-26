@@ -7,17 +7,6 @@ struct MadLib {
     object: String
 }
 
-fn main() {
-    let name = get_input("Please enter your name: ");
-    let subject = get_input("Please enter a subject: ");
-    let verb = get_input("Please enter a verb (past tense): ");
-    let object = get_input("Please enter an object: ");
-
-    let ml = MadLib::new(name, subject, verb, object);
-
-    print_mad_lib(ml);
-}
-
 impl MadLib {
     fn new(name: String, subject: String,
            verb: String, object: String) -> MadLib {
@@ -27,14 +16,23 @@ impl MadLib {
             verb: verb, object: object
         }
     }
-}
 
-fn print_mad_lib(ml: MadLib) {
-    println!("{name} {verb} the {subject} with their {object}",
-             name=ml.name,
-             verb=ml.verb,
-             subject=ml.subject,
-             object=ml.object);
+    fn create() -> MadLib {
+        let name = get_input("Please enter your name: ");
+        let subject = get_input("Please enter a subject: ");
+        let verb = get_input("Please enter a verb (past tense): ");
+        let object = get_input("Please enter an object: ");
+
+        MadLib::new(name, subject, verb, object)
+    }
+
+    fn print(self) {
+        println!("{name} {verb} the {subject} with their {object}",
+                 name=self.name,
+                 verb=self.verb,
+                 subject=self.subject,
+                 object=self.object);
+    }
 }
 
 /*
@@ -70,4 +68,11 @@ fn clean_input(mut input: String) -> String {
         input.pop();
     }
     input // Return cleaned input.
+}
+
+
+fn main() {
+    let ml = MadLib::create();
+
+    ml.print();
 }
