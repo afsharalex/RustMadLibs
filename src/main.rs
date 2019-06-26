@@ -7,14 +7,27 @@ fn main() {
 }
 
 fn get_input(msg: &'static str) -> String {
-    let mut input = String::new();
-
     print!("{}", msg); // Print message.
+
+    let mut input = get_raw_input();
+
+    input = clean_input(input);
+
+    input // Return cleaned input.
+}
+
+fn get_raw_input() -> String {
+    let mut input = String::new();
 
     let _=stdout().flush(); // Flust stdout.
 
     stdin().read_line(&mut input).expect("Error reading input");
-    // Remove newline.
+
+    input // Return raw input.
+}
+
+fn clean_input(mut input: String) -> String {
+   // Remove newline.
     if let Some('\n')=input.chars().next_back() {
         input.pop();
     }
@@ -22,6 +35,5 @@ fn get_input(msg: &'static str) -> String {
     if let Some('\r')=input.chars().next_back() {
         input.pop();
     }
-
     input // Return cleaned input.
 }
