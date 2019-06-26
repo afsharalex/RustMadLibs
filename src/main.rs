@@ -1,21 +1,40 @@
 use std::io::{stdin,stdout,Write};
 
+struct MadLib {
+    name: String,
+    subject: String,
+    verb: String,
+    object: String
+}
+
 fn main() {
     let name = get_input("Please enter your name: ");
     let subject = get_input("Please enter a subject: ");
     let verb = get_input("Please enter a verb (past tense): ");
     let object = get_input("Please enter an object: ");
 
-    print_mad_lib(name, verb, subject, object);
+    let ml = MadLib::new(name, subject, verb, object);
+
+    print_mad_lib(ml);
 }
 
-fn print_mad_lib(name: String, verb: String,
-                 subject: String, object: String) {
+impl MadLib {
+    fn new(name: String, subject: String,
+           verb: String, object: String) -> MadLib {
+
+        MadLib {
+            name: name, subject: subject,
+            verb: verb, object: object
+        }
+    }
+}
+
+fn print_mad_lib(ml: MadLib) {
     println!("{name} {verb} the {subject} with their {object}",
-             name=name,
-             verb=verb,
-             subject=subject,
-             object=object);
+             name=ml.name,
+             verb=ml.verb,
+             subject=ml.subject,
+             object=ml.object);
 }
 
 /*
